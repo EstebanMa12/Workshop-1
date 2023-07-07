@@ -117,7 +117,7 @@ color: #b9b6d3;
     right: 2.5em;
     color: #ff7a7a;
 }
-.page_section .page_plan main form label:nth-of-type(5){
+/* .page_section .page_plan main form label:nth-of-type(5){
     position: absolute;
     top: 3.5em;
     right: 4em;
@@ -136,7 +136,7 @@ color: #b9b6d3;
     position: absolute;
     top: 26.2em;
     right: 4em;
-}
+} */
 .page_section .page_plan main form button{
     padding: 1.5em;
     background-color: #38cc8c;
