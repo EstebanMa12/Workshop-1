@@ -99,30 +99,30 @@ color: #b9b6d3;
     color: #ff7a7a;
 }
 
-.page_section .page_plan main form label:nth-of-type(3){
+.page_section .page_plan main form label:nth-of-type(2){
     position: absolute;
     top: 15em;
     right: 2.5em;
     color: #ff7a7a;
 }
-.page_section .page_plan main form label:nth-of-type(5){
+.page_section .page_plan main form label:nth-of-type(3){
     position: absolute;
     top: 22.5em;
     right: 2.5em;
     color: #ff7a7a;
 }
-.page_section .page_plan main form label:nth-of-type(7){
+.page_section .page_plan main form label:nth-of-type(4){
     position: absolute;
     top: 30em;
     right: 2.5em;
     color: #ff7a7a;
 }
-.page_section .page_plan main form label:nth-of-type(2){
+.page_section .page_plan main form label:nth-of-type(5){
     position: absolute;
     top: 3.5em;
     right: 4em;
 }
-.page_section .page_plan main form label:nth-of-type(4){
+.page_section .page_plan main form label:nth-of-type(5){
     position: absolute;
     top: 11em;
     right: 4em;
