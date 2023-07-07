@@ -1,76 +1,83 @@
-.page_section{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: 100%;
-    gap: 5em;
-}
 *{
     padding: 0;
     margin: 0;
     box-sizing: border-box;
 }
-body{
+body.className{
     display: grid;
     place-items: center;
     background-color: #ff7a7a;
-    background-image: url(SPRINTS\SPRINT2\media\bg-intro-mobile.491d4c07.png) ;
+    background-image: url(/Workshop1/media/bg-intro-desktop.png);
     background-repeat: no-repeat;
     background-size: cover;
     font-size: 1em;
 }
 
+
 body,html{
-    min-height: 100svh;
-    min-height: 100vh;
-    width: 100vw;
-    touch-action: pan-y;
-    overflow-x: hidden
+        min-height: 100vh;
+        min-height: 100vh;
+        width: 100vw;
+        touch-action: pan-y;
+        overflow-x: hidden
 }
+
 input,input:focus {
     border: none;
     outline: none
 }
-.page_section .page_textContent{
+.page_section{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    gap: 5em;
+}
+
+.page_section .container-fluid{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    place-items: center;
+    gap: 1em;
+}
+
+.page_section .container-fluid .mycolumn{
     display: flex;
     flex-direction: column;
-    align-items: center;
-    text-align: center;
+    justify-content: center;
     gap: 1.3em;
     color: #fff;
     max-width: 80%;
 }
-.page_section .page_plan{
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-    gap: 1em;
-}
-
-.page_section .page_plan .page_price{
+.page_section .container-fluid .page_price{
     background-color: #6055a5;
     padding: 1.5em 2em;
     border-radius: 8px;
-    box-shadow: 0 6px 2px 0 rgba(0,0,0,.205)
+    box-shadow: 0 6px 2px 0 rgba(0,0,0,.205);
+    max-width: 80%;
+    padding: 16px;
+    margin-bottom: 16px;
 }
-.page_section .page_plan .page_price p{
-color: #b9b6d3;
-}
-.page_section .page_plan .page_price p span{
+.page_section .container-fluid .page_price p{
+    color: #b9b6d3;
+    }
+.page_section .container-fluid .page_price p span{
     color: #fff;
     font-weight: 700;
 }
-.page_section .page_plan main{
+
+.page_section .container-fluid main{
     display: flex;
     align-items: center;
     flex-direction: column;
     background-color: #fff;
-    max-width: 92%;
+    max-width: 80%;
     padding: 1em 0;
     border-radius: 10px;
     box-shadow: 0 5px 0 0 rgba(0,0,0,.219)
 }
-.page_section .page_plan main form{
+.page_section .container-fluid main form{
     display: flex;
     flex-direction: column;
     position: relative;
@@ -78,66 +85,45 @@ color: #b9b6d3;
     padding: 1.5em;
     gap: 1.8em;
 }
-.page_section .page_plan main form input{
+.page_section .container-fluid main form input{
     border: 1.5px solid #dcdcdc;
     padding: 1em 2em;
     border-radius: 5px;
 }
-.page_section .page_plan main form input::placeholder{
+.page_section .container-fluid main form input::placeholder{
     font-weight: 700;
 }
-.page_section .page_plan main form input:focus{
+.page_section .container-fluid main form input:focus{
     border: 1.5px solid #3e3c49;
 }
-.page_section .page_plan main form label{
+.page_section .container-fluid main form label{
     font-size: .6em;
 }
-.page_section .page_plan main form label:first-of-type{
+.page_section .container-fluid main form label:first-of-type{
     position: absolute;
-    top: 7.6em;
+    top: 8.6em;
     right: 2.5em;
     color: #ff7a7a;
 }
-
-.page_section .page_plan main form label:nth-of-type(2){
+.page_section .container-fluid main form label:nth-of-type(2){
     position: absolute;
-    top: 15em;
+    top: 17.5em;
     right: 2.5em;
     color: #ff7a7a;
 }
-.page_section .page_plan main form label:nth-of-type(3){
+.page_section .container-fluid main form label:nth-of-type(3){
     position: absolute;
-    top: 22.5em;
+    top: 26.5em;
     right: 2.5em;
     color: #ff7a7a;
 }
-.page_section .page_plan main form label:nth-of-type(4){
+.page_section .container-fluid main form label:nth-of-type(4){
     position: absolute;
-    top: 30em;
+    top: 36em;
     right: 2.5em;
     color: #ff7a7a;
 }
-/* .page_section .page_plan main form label:nth-of-type(5){
-    position: absolute;
-    top: 3.5em;
-    right: 4em;
-}
-.page_section .page_plan main form label:nth-of-type(5){
-    position: absolute;
-    top: 11em;
-    right: 4em;
-}
-.page_section .page_plan main form label:nth-of-type(6){
-    position: absolute;
-    top: 18.5em;
-    right: 4em;
-}
-.page_section .page_plan main form label:nth-of-type(8){
-    position: absolute;
-    top: 26.2em;
-    right: 4em;
-} */
-.page_section .page_plan main form button{
+.page_section .container-fluid main form button{
     padding: 1.5em;
     background-color: #38cc8c;
     color: #fff;
@@ -148,13 +134,13 @@ color: #b9b6d3;
     border-bottom: 3px solid rgba(0,0,0,.082);
     cursor: pointer;
 }
-.page_section .page_plan main p{
+.page_section .container-fluid main p{
     font-size: .8em;
     max-width: 80%;
     text-align: center;
     color: #b9b6d3;
 }
-.page_section .page_plan main p span{
+.page_section .container-fluid main p span{
     cursor: pointer;
     color: #ff7a7a;
     font-weight: 700;
@@ -163,3 +149,12 @@ color: #b9b6d3;
     color: rgb(255, 122, 122);
 }
 
+
+/* RESPONSIVE DESING WITH MEDIA QUERIES */
+
+/* @media(max-width:31.5em) {
+    body.className{
+        background-image: url(/Workshop1/media/bg-intro-mobile.png);
+        background-size: cover;
+    }
+} */
