@@ -49,8 +49,6 @@ function stripPaint(field) {
     invalid?.innerHTML?.includes(field.input.id) 
     ? invalid?.innerHTML?.replaceAll(red(field), black(field))
     : invalid?.innerHTML
-
-    console.log(red(field), black(field))
 }
 
 function paintFields(field) {
