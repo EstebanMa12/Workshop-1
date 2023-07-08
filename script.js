@@ -45,12 +45,10 @@ function stripPaint(field) {
 
     // Input's placeholder styles
     const invalid = document.querySelector(`#redCanvas`)
-    invalid.innerHTML = 
-    invalid?.innerHTML?.includes(field.input.id) 
+    if (!!invalid) invalid.innerHTML = 
+    invalid.innerHTML.includes(field.input.id) 
     ? invalid?.innerHTML?.replaceAll(red(field), black(field))
     : invalid?.innerHTML
-
-    console.log(red(field), black(field))
 }
 
 function paintFields(field) {
