@@ -7,7 +7,7 @@ body.className{
     display: grid;
     place-items: center;
     background-color: #ff7a7a;
-    background-image: url(/Workshop1/media/bg-intro-desktop.png);
+    background-image: url(/media/bg-intro-desktop.png);
     background-repeat: no-repeat;
     background-size: cover;
     font-size: 1em;
@@ -148,9 +148,24 @@ input,input:focus {
 .inputsPlaceholderRed {
     color: rgb(255, 122, 122);
 }
-
-
+.inputContainer {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    align-items: center;
+    position: relative;
+}
+.inputContainer input {
+    grid-column: 1;
+}
+.error {
+    position: absolute;
+}
 /* RESPONSIVE DESING WITH MEDIA QUERIES */
+@media screen and (max-width: 375px) {
+    body.className {
+        background-image: url(/media/bg-intro-mobile.png);
+}
+}
 
 /* @media(max-width:31.5em) {
     body.className{

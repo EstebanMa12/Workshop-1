@@ -19,13 +19,16 @@ const fields = inputs.map((input, index) => {
 // ON SUBMIT EVENT
 form.onsubmit = e => {
     e.preventDefault()
+
+    // Rejecting empty fields
     l_pw.innerText = 'Password cannot be empty'
 
-    fields.forEach(field => {
-        if (field.input.value.trim()) return stripPaint(field)
-        
-        return paintFields(field)
-    })
+    fields.forEach(field =>
+        // ternary operator
+        field.input.value.trim() // condition
+        ? stripPaint(field) // true
+        : paintFields(field) // false
+    )
 }
 // END OF MAIN LOGIC
 
@@ -72,13 +75,23 @@ function paintFields(field) {
     styleEl.innerHTML.includes(field.input.id)
     ? styleEl.innerHTML.replaceAll(black(field), red(field))
     : styleEl.innerHTML += red(field)
+
 }
+
+// LOCAL STORAGE
+
+
 
 // IMPROVING INPUTS
 
 // first name && last name inputs : they can only receive letters
 [ i_fn, i_sn ].forEach(input => input.onkeydown = function(e) {
-    if (e.key.match(/^[A-Za-z\s]+$/)) return  
+    const labelOfInput = form.querySelector(`[for="${input.id}"]`)
+
+    if (e.key.match(/^[A-Za-z\s]+$/)) return labelOfInput.style.display = 'none'
+
+    labelOfInput.style.display = 'inline'
+    labelOfInput.innerText = 'Only letters allowed'
     e.preventDefault()
 })
 
