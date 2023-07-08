@@ -13,7 +13,6 @@ body.className{
     font-size: 1em;
 }
 
-
 body,html{
         min-height: 100vh;
         min-height: 100vh;
@@ -97,29 +96,29 @@ input,input:focus {
     border: 1.5px solid #3e3c49;
 }
 .page_section .container-fluid main form label{
-    font-size: .6em;
+    font-size: .8em;
 }
 .page_section .container-fluid main form label:first-of-type{
     position: absolute;
-    top: 8.6em;
+    top: 6.5em;
     right: 2.5em;
     color: #ff7a7a;
 }
 .page_section .container-fluid main form label:nth-of-type(2){
     position: absolute;
-    top: 17.5em;
+    top: 13.3em;
     right: 2.5em;
     color: #ff7a7a;
 }
 .page_section .container-fluid main form label:nth-of-type(3){
     position: absolute;
-    top: 26.5em;
+    top: 20em;
     right: 2.5em;
     color: #ff7a7a;
 }
 .page_section .container-fluid main form label:nth-of-type(4){
     position: absolute;
-    top: 36em;
+    top: 26.7em;
     right: 2.5em;
     color: #ff7a7a;
 }
