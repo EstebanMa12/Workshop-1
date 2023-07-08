@@ -16,6 +16,26 @@ const fields = inputs.map((input, index) => {
     return { input: input, label: labels[index] }
 })
 
+// esteban3 estado
+// cambia label > pinta si vacío >
+// keydown     >  keyup > input
+// ON KEYDOWN INPUT EVENTS
+fields.forEach(field => {
+    field.input.onkeyup = function(e) {
+        // if empty
+        field.input.value.trim()
+        ? stripPaint(field)
+        : paintFields(field)
+
+        // if error
+        field.input.error
+        ? paintFields(field)
+        : stripPaint(field)
+
+        console.log(field.input.error)
+}
+})
+
 // ON SUBMIT EVENT
 form.onsubmit = e => {
     e.preventDefault()
@@ -88,11 +108,14 @@ function paintFields(field) {
 [ i_fn, i_sn ].forEach(input => input.onkeydown = function(e) {
     const labelOfInput = form.querySelector(`[for="${input.id}"]`)
 
-    if (e.key.match(/^[A-Za-z\s]+$/)) return labelOfInput.style.display = 'none'
+    if (e.key.match(/^[A-Za-z\s]+$/)) {
+    return }
 
+    input.setAttribute('error', 'error')
     labelOfInput.style.display = 'inline'
     labelOfInput.innerText = 'Only letters allowed'
     e.preventDefault()
+    console.log(input)
 })
 
 // pass must receive at least 3 characters
