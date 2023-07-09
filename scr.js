@@ -12,7 +12,11 @@ const labels = [ l_fn, l_sn, l_em, l_pw ]
 // INPUTS && LABELS 
 const fields = inputs.map((input, index) => { 
     return { input: input, label: labels[index] }
-});
+})
+
+const nameFields = [fields[0], fields[1]]
+const emailField = fields[2]
+const passField = fields[3];
 
 // INPUTS EVENTS
 
@@ -111,6 +115,12 @@ i_pw.onkeyup = function() {
     l_pw.innerText = 'Password must have at least 4 characters'
 }
 
+// [SUBMIT FORM]
+form.onsubmit = e => {
+    e.preventDefault()
+
+
+}
 
 // [PAINTING FUNCTIONS]
 
@@ -135,7 +145,7 @@ function stripPaint(input, label) {
     : invalid?.innerHTML
 }
 
-// PINTAR
+// PINTAR ROJO
 function paintFields(input, label, def) {
     // Label styles
     label.style.display = 'inline'
@@ -161,3 +171,5 @@ function paintFields(input, label, def) {
     : styleEl.innerHTML += red(input)
 
 }
+
+// PINTAR AZUL
