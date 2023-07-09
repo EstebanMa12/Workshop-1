@@ -53,6 +53,27 @@ i_em.onkeyup = function(e) {
     const label = form.querySelector(`[for="${this.id}"]`)
     if (!this.value.length) return paintFields(this, label, true)
 
+    // Paint until all requirements are met
+    paintFields(this, label)
+
+    // RESTRICTIONS
+    const regEx_letters = /[a-zA-Z]/
+
+    const pointsAround = this.value.at(0) == '.'
+
+    const lettersBeforeAt = this.value.includes('@')
+    ? regEx_letters.test(this.value.substring(0, this.value.indexOf('@')))
+    : regEx_letters.test(this.value)
+
+    const lettersAfterAt = this.value.includes('@') 
+    ? regEx_letters.test(this.value.slice(this.value.indexOf('@'))) : false
+    
+    const includesPoint = lettersAfterAt 
+    ? this.value.includes('.') : false
+
+    const includesCom = regEx_letters.test(this.value.at(-1))
+
+    // ERRORS TO SHOWCASE
     const error = {
         '.@': 'Please enter a part before "@"',
         '@': 'Please include an "@"',
@@ -61,17 +82,6 @@ i_em.onkeyup = function(e) {
         'com': 'Please include a termination for your email',
         '.!': '"." is being used at a bad position'
     }
-
-    const lettersBeforeAt = this.value.includes('@')
-    ? !!this.value.substring(0, this.value.indexOf('@')).match(/^[a-zA-Z]+$/g)?.length : !!this.value.match(/^[a-zA-Z]+$/g)?.length
-
-    const lettersAfterAt = !!this.value.substring(this.value.indexOf('@')+1, this.value.at(-1)).match(/^[a-zA-Z]+$/g)?.length 
-
-    const includesPoint = lettersAfterAt 
-    ? this.value.substring(this.value.indexOf('@') + 1, this.value.at(-1)).includes('.') : false
-
-    const pointsAround = this.value.at(0) == '.' ||
-     this.value.at(-1) == '.'
 
     pointsAround ? label.innerHTML = error['.!']
     : !lettersBeforeAt ? label.innerHTML = error['.@']
