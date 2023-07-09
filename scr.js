@@ -24,24 +24,33 @@ const passField = fields[3];
 [ i_fn, i_sn ].forEach(input => input.onkeydown = function(e) {
     const label = form.querySelector(`[for="${input.id}"]`)
 
-    if (e.key.match(/^[A-Za-z\s]+$/)) return stripPaint(input, label)
+    if (e.key.match(/^[A-Za-z\s]+$/) && e.key != 'Shift') return stripPaint(input, label)
 
-    label.innerHTML = 'Only letters allowed'
-    paintFields(input, label)
     e.preventDefault()
 });
 
-[ i_fn, i_sn ].forEach(input => input.onkeyup = function(e) {
+[ i_fn, i_sn ].forEach(input => input.onkeyup = function(e) {    
+    const specialKeys = e.key != "Control" && e.key != "Tab" && e.key != "Alt"
+    
     const label = form.querySelector(`[for="${input.id}"]`)
 
-    if (!input.value.trim().length && e.key == ' ') input.value = ''
+    if (!input.value.length) paintFields(input, label, true)
+    paintFields(input, label)
 
-    if (input.value.trim() && e.key.match(/^[A-Za-z\s]+$/)) return stripPaint(input, label)
+    if (e.key == 'Shift' && input.value.at(-1).match(/[a-zA-Z]/)) return stripPaint(input, label)
 
-    if (!e.key.match(/^[A-Za-z\s]+$/)) label
+    if (!e.key.match(/^[A-Za-z\s]+$/) && specialKeys) label
     .innerHTML = 'Only letters allowed'
 
-    paintFields(input, label, true)
+    if (input.value.trim() && e.key.match(/^[A-Za-z\s]+$/) && specialKeys) {
+        label.innerHTML = 'Only letters allowed'
+        return stripPaint(input, label)
+    }
+    
+    if (!input.value.trim().length && e.key == ' ') {
+        input.value = ''
+        paintFields(input, label, true) // cannot be empty
+    }
 })
 
 // [EMAIL]
