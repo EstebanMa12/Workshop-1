@@ -3,14 +3,14 @@ const form = document.querySelector('form')
 
 // INPUTS
 const [ i_fn, i_sn, i_em, i_pw ] = form.querySelectorAll('input') 
-const inputs = [ i_fn, i_sn, i_em, i_pw ]
+const Inputs = [ i_fn, i_sn, i_em, i_pw ]
 
 // LABELS
 const [ l_fn, l_sn, l_em, l_pw ] = form.querySelectorAll('label')
 const labels = [ l_fn, l_sn, l_em, l_pw ]
 
 // INPUTS && LABELS 
-const fields = inputs.map((input, index) => { 
+const fields = Inputs.map((input, index) => { 
     return { input: input, label: labels[index] }
 })
 
@@ -144,7 +144,7 @@ i_pw.onkeyup = function() {
 }
 
 // [BLUR INPUTS]
-inputs.forEach(input => input.onblur = function() {
+Inputs.forEach(input => input.onblur = function() {
     const label = form.querySelector(`[for="${this.id}"]`)
 
     if (!input.value) paintFields(input, label)
@@ -152,47 +152,46 @@ inputs.forEach(input => input.onblur = function() {
 })
 
 // [SUBMIT FORM]
-const users = JSON.parse(localStorage.getItem('BootCamp Users')) || []
+const Users = JSON.parse(localStorage.getItem('BootCamp Users')) || []
 form.onsubmit = e => {
     e.preventDefault()
     const label = input => form.querySelector(
         `[for="${input.id}"]`
     )
     
-    inputs.filter(input => input.style.color == '' )
+    Inputs.filter(input => input.style.color == '' )
     .forEach(input => paintFields(input, label(input), true))
 
     const isValidated = input => input
     .style.color == 'rgb(13, 110, 253)' 
 
-    inputs.every(input => isValidated(input))
+    Inputs.every(input => isValidated(input))
     ? register() : fixInput()
 
     function register() {
         const keys = ['name', 'last', 'mail', 'pass']  
-        const values = inputs.map(input => input.value)
+        const values = Inputs.map(input => input.value)
         
         let user = {}; 
         keys.forEach((key, i) => user[key] = values[i] )
-        users.push(user)
+        Users.push(user)
         
         localStorage.setItem(
             'BootCamp Users', 
-            JSON.stringify(users)
+            JSON.stringify(Users)
         )
         
         console.log(user.name, user.last, 'registered!')
     }
 
     function fixInput() {
-        const formerError = inputs
+        const formerError = Inputs
         .find(input => input.style.color.includes('rgb(255'))
 
         formerError.focus()
     }
 }
 // [PAINTING FUNCTIONS]
-
 // DYNAMIC RED COLOR ON FIELDS
 const black = input => `#${input.id}::placeholder { color: rgb(117, 117, 117); } `
 const red = input => `#${input.id}::placeholder { color: rgb(255, 122, 122); } `
