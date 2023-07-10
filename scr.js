@@ -124,6 +124,14 @@ i_pw.onkeyup = function() {
     l_pw.innerText = 'Password must have at least 4 characters'
 }
 
+// [BLUR INPUTS]
+inputs.forEach(input => input.onblur = function() {
+    const label = form.querySelector(`[for="${this.id}"]`)
+
+    if (!input.value) paintFields(input, label)
+    else if (input.style.color == 'black') validateInput(input, label) 
+})
+
 // [SUBMIT FORM]
 form.onsubmit = e => {
     e.preventDefault()
@@ -136,6 +144,7 @@ form.onsubmit = e => {
 // DYNAMIC RED COLOR ON FIELDS
 const black = input => `#${input.id}::placeholder { color: rgb(117, 117, 117); } `
 const red = input => `#${input.id}::placeholder { color: rgb(255, 122, 122); } `
+const blue = input => `#${input.id}::placeholder { color: #0d6efd; } `
 
 // DESPINTAR
 function stripPaint(input, label) {
@@ -176,9 +185,33 @@ function paintFields(input, label, def) {
 
     styleEl.innerHTML = 
     styleEl.innerHTML.includes(input.id)
-    ? styleEl.innerHTML.replaceAll(black(input), red(input))
+    ? styleEl.innerHTML.includes(black(input))
+        ? styleEl.innerHTML.replaceAll(black(input), red(input))
+        : styleEl.innerHTML.replaceAll(blue(input), red(input))
     : styleEl.innerHTML += red(input)
 
 }
 
 // PINTAR AZUL
+function validateInput(input, label) {
+    // Label styles
+    label.style.display = 'none'
+
+    // Input styles
+    input.style = "color: #0d6efd;\
+    border-color: #0d6efd;"
+
+    // Input's placeholder styles
+    let styleEl = document.querySelector('#redCanvas') 
+
+    if (!styleEl) {
+        styleEl = document.createElement('style')
+        styleEl.setAttribute('id', 'redCanvas')
+        document.head.appendChild(styleEl)
+    }
+
+    styleEl.innerHTML = 
+    styleEl.innerHTML.includes(input.id)
+    ? styleEl.innerHTML.replaceAll(black(input), blue(input))
+    : styleEl.innerHTML += blue(input)
+}
