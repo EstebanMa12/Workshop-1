@@ -22,35 +22,52 @@ const passField = fields[3];
 
 // [FIRST && LAST NAMES]
 [ i_fn, i_sn ].forEach(input => input.onkeydown = function(e) {
-    const label = form.querySelector(`[for="${input.id}"]`)
+    // if key == backspace || space || letter, allow
+    const specialKeys = e.key == 'Backspace'  
+    || e.key == ' ' || e.key == 'Tab' || e.key == 'Enter'
+    
+    const twoSpaces = e.key == ' ' && input.value.at(-1) == ' ' 
+    
+    const exceptions = specialKeys
+    || (e.key.match(/[a-zA-Z]/) 
+    && e.key.length == 1)
 
-    if (e.key.match(/^[A-Za-z\s]+$/) && e.key != 'Shift') return stripPaint(input, label)
-
-    e.preventDefault()
+    if (exceptions && !twoSpaces) return 
+    e.preventDefault() // else || moreSpaces, block.
 });
 
-[ i_fn, i_sn ].forEach(input => input.onkeyup = function(e) {    
-    const specialKeys = e.key != "Control" && e.key != "Tab" && e.key != "Alt"
+[ i_fn, i_sn ].forEach(input => input.onkeyup = function(e) {
+    if (e.key.match(/[A-Za-z]/) && e.key.length > 1 && e.key != 'Backspace' && e.key != 'Enter') return
     
     const label = form.querySelector(`[for="${input.id}"]`)
-
-    if (!input.value.length) paintFields(input, label, true)
-    paintFields(input, label)
-
-    if (e.key == 'Shift' && input.value.at(-1).match(/[a-zA-Z]/)) return stripPaint(input, label)
-
-    if (!e.key.match(/^[A-Za-z\s]+$/) && specialKeys) label
-    .innerHTML = 'Only letters allowed'
-
-    if (input.value.trim() && e.key.match(/^[A-Za-z\s]+$/) && specialKeys) {
-        label.innerHTML = 'Only letters allowed'
-        return stripPaint(input, label)
-    }
     
-    if (!input.value.trim().length && e.key == ' ') {
-        input.value = ''
-        paintFields(input, label, true) // cannot be empty
-    }
+    // if empty, reject and change label
+    !input.value.trim() 
+    && (e.key.match(/[A-Za-z]/) || e.key == ' ') 
+    ? label.innerHTML = input.placeholder + ' cannot be empty'
+    : label.innerHTML = 'Only letters allowed'
+        
+    // if space at the begininng, reject
+    if (e.key == ' ' && !input.value.trim()) input.value = ''
+
+    // if keyup shift after symbol, reject
+    if (input.style.color != 'black' && e.key == 'Shift') return 
+    
+    // ALWAYS PAINT RED UNLESS...
+    
+    // unless it's a letter
+    if (e.key.match(/[A-Za-z]/) && e.key.length == 1) return stripPaint(input, label)
+    // unless it's a backspace and still got letters
+    if (e.key == 'Backspace' && !!input.value && (input.style.color == 'black' || input.style.color == 'rgb(13, 110, 253)') ) return stripPaint(input, label)
+
+    // unless it's a letter before keyup a shift
+    if (input.value.at(-1)?.match(/[A-Za-z]/) && e.key == 'Shift') return stripPaint(input, label)
+
+    // unless it's a space after letter
+    if (input.value.match(/[A-Za-z]/) && e.key == ' ') return stripPaint(input, label)
+
+    // BEYOND THERE... ALWAYS PAINT RED
+    paintFields(input, label) // paint red...
 })
 
 // [EMAIL]
@@ -122,6 +139,7 @@ i_pw.onkeyup = function() {
     okishPw ? stripPaint(this, label) : paintFields(this, label)
 
     l_pw.innerText = 'Password must have at least 4 characters'
+    // , including 1 special charecter, 1 uppercase letter and 1 number'
 }
 
 // [BLUR INPUTS]
@@ -136,7 +154,7 @@ inputs.forEach(input => input.onblur = function() {
 form.onsubmit = e => {
     e.preventDefault()
 
-
+    console.log('SUBMITED')
 }
 
 // [PAINTING FUNCTIONS]
