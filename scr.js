@@ -57,8 +57,9 @@ const passField = fields[3];
     
     // unless it's a letter
     if (e.key.match(/[A-Za-z]/) && e.key.length == 1) return stripPaint(input, label)
+
     // unless it's a backspace and still got letters
-    if (e.key == 'Backspace' && !!input.value && (input.style.color == 'black' || input.style.color == 'rgb(13, 110, 253)') ) return stripPaint(input, label)
+    if (e.key == 'Backspace' && !!input.value) return stripPaint(input, label)
 
     // unless it's a letter before keyup a shift
     if (input.value.at(-1)?.match(/[A-Za-z]/) && e.key == 'Shift') return stripPaint(input, label)
@@ -73,7 +74,7 @@ const passField = fields[3];
 // [EMAIL]
 i_em.onkeydown = function(e) {
     const space = e.key == ' ', at = e.key == '@'
-    const symbol = e.key.match(/[^@a-zA-Z0-9.]+/)
+    const symbol = e.key?.match(/[^@a-zA-Z0-9.]+/)
     const multipleAts = this.value.includes('@') && at 
 
     if (space || symbol || multipleAts) e.preventDefault() 
@@ -109,7 +110,7 @@ i_em.onkeyup = function(e) {
         '@': 'Please include an "@"',
         '@.': 'Please enter a part following "@" and before "."',
         '.': 'Please include a "." after "@" and before "com"',
-        'com': 'Please include a termination for your email',
+        'com': 'Please include a valid termination for your email',
         '.!': '"." is being used at a bad position'
     }
 
@@ -151,12 +152,45 @@ inputs.forEach(input => input.onblur = function() {
 })
 
 // [SUBMIT FORM]
+const users = JSON.parse(localStorage.getItem('BootCamp Users')) || []
 form.onsubmit = e => {
     e.preventDefault()
+    const label = input => form.querySelector(
+        `[for="${input.id}"]`
+    )
+    
+    inputs.filter(input => input.style.color == '' )
+    .forEach(input => paintFields(input, label(input), true))
 
-    console.log('SUBMITED')
+    const isValidated = input => input
+    .style.color == 'rgb(13, 110, 253)' 
+
+    inputs.every(input => isValidated(input))
+    ? register() : fixInput()
+
+    function register() {
+        const keys = ['name', 'last', 'mail', 'pass']  
+        const values = inputs.map(input => input.value)
+        
+        let user = {}; 
+        keys.forEach((key, i) => user[key] = values[i] )
+        users.push(user)
+        
+        localStorage.setItem(
+            'BootCamp Users', 
+            JSON.stringify(users)
+        )
+        
+        console.log(user.name, user.last, 'registered!')
+    }
+
+    function fixInput() {
+        const formerError = inputs
+        .find(input => input.style.color.includes('rgb(255'))
+
+        formerError.focus()
+    }
 }
-
 // [PAINTING FUNCTIONS]
 
 // DYNAMIC RED COLOR ON FIELDS
@@ -233,3 +267,9 @@ function validateInput(input, label) {
     ? styleEl.innerHTML.replaceAll(black(input), blue(input))
     : styleEl.innerHTML += blue(input)
 }
+
+// // for testing
+// function x() {
+//     inputs.forEach(input => input
+//     .style.color = 'rgb(13, 110, 253)')
+// }; x()
