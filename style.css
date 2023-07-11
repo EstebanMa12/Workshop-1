@@ -8,7 +8,7 @@ body.className{
     display: grid;
     place-items: center;
     background-color: #ff7a7a;
-    background-image: url(/media/bg-intro-desktop.png);
+    background-image: url(./media/bg-intro-desktop.png);
     background-repeat: no-repeat;
     background-size: cover;
     font-family: 'Poppins', sans-serif;
@@ -170,7 +170,7 @@ input,input:focus {
 /* RESPONSIVE DESING WITH MEDIA QUERIES */
 @media screen and (max-width: 375px) {
     body.className {
-        background-image: url(/media/bg-intro-mobile.png);
+        background-image: url(./media/bg-intro-mobile.png);
 }
 }
 
