@@ -19,7 +19,7 @@ body,html{
         min-height: 100vh;
         width: 100vw;
         touch-action: pan-y;
-        overflow-x: hidden
+        overflow-x: hidden;
 }
 
 input,input:focus {
@@ -162,6 +162,38 @@ input,input:focus {
     margin-right: 3vh;
     position: absolute;
 }
+/* CONGRATULATIONS */
+#congratulations, #fail {
+    cursor: pointer;
+    position: fixed;
+    display: none;
+    flex-flow: column wrap;
+    align-items: center;
+    justify-content:space-evenly;
+    z-index: 9;
+
+    width: 40%;
+    height: 80%;
+    background-color: rgb(0, 112, 164);
+    color: white;
+    border-radius: 10px;
+
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+#fail {
+    background-color: rgb(176, 139, 193);
+}
+#fail:hover {
+    background-color: rgb(65, 34, 142);
+}
+#congratulations:hover {
+    background-color: rgb(10, 145, 255);
+}
+#congratulations > img, #fail > img {
+    width: 50%;
+}
 
 /* RESPONSIVE DESING WITH MEDIA QUERIES */
 @media screen and (max-width: 375px) {
@@ -177,7 +209,12 @@ input,input:focus {
         width: 100%;
     }
 }
-
+@media screen and (max-width:800px) {
+    #congratulations, #fail { 
+        width: 69%;
+        height: 80%;
+    }
+}
 /* @media(max-width:31.5em) {
     body.className{
         background-image: url(/Workshop1/media/bg-intro-mobile.png);

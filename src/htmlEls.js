@@ -19,8 +19,22 @@ const nameField = { 'first' : field[0], 'last' : field[1] }
 const emailField = field[2]
 const passField = field[3]
 
+// CONGRATULATIONS
+const congratulations = document
+.querySelector('#congratulations')
+
+congratulations.onclick = function() { 
+    return this.style.display = 'none'
+}
+
+const failure = document.querySelector('#fail')
+
+failure.onclick = function() { 
+    this.style.display = 'none'
+    return i_em.focus()
+}
 
 export { 
-    Form, Inputs, Labels, 
-    nameField, emailField, passField 
+    Form, Inputs, Labels, congratulations,
+    failure, nameField, emailField, passField 
 }
