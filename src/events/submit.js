@@ -1,5 +1,6 @@
-import { Form, Inputs } from "../htmlEls.js"
+import { Form, Inputs, congratulations, failure } from "../htmlEls.js"
 import { paintItRed } from "../paintings.js"
+import confetti from 'https://cdn.skypack.dev/canvas-confetti'
 
 const Users = JSON.parse(localStorage.getItem('BootCamp Users')) || []
 
@@ -30,17 +31,30 @@ Form.onsubmit = e => {
             existing => existing.mail == user.mail
         )
         
-        if (userAlreadyExist) return console
-        .error('[', user.name, user.last, ']', 'already exists')
+        // reject user
+        if (userAlreadyExist) {
+            failure.style.display = 'flex'
+
+            return console.error(
+                '[', user.name, 
+                user.last, ']', 
+                'already exists'
+            )    
+        };         // Play music
+        document.querySelector('#yay').play()
         
+        // save user 
         Users.push(user)
+        confetti()
         
         localStorage.setItem(
             'BootCamp Users', 
             JSON.stringify(Users)
         )
         
+        // DISPLAY SUCESS
         console.log('[', user.name, user.last, ']', 'registered!')
+        congratulations.style.display = 'flex'
     }
 
     function fixInput() {
