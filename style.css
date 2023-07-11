@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
 *{
     padding: 0;
     margin: 0;
@@ -10,11 +11,15 @@ body.className{
     background-image: url(/media/bg-intro-desktop.png);
     background-repeat: no-repeat;
     background-size: cover;
+    font-family: 'Poppins', sans-serif;
     font-size: 1em;
+    line-height: 1.6;
+    padding-block: 7.5rem;
 }
 
 
 body,html{
+        padding-left: 5vh;
         min-height: 100vh;
         min-height: 100vh;
         width: 100vw;
@@ -36,9 +41,9 @@ input,input:focus {
 
 .page_section .container-fluid{
     display: flex;
-    align-items: center;
+    align-items: center !important;
     flex-direction: column;
-    place-items: center;
+    place-items: center !important;
     gap: 1em;
 }
 
@@ -97,29 +102,29 @@ input,input:focus {
     border: 1.5px solid #3e3c49;
 }
 .page_section .container-fluid main form label{
-    font-size: .6em;
+    font-size: .8em;
 }
 .page_section .container-fluid main form label:first-of-type{
     position: absolute;
-    top: 8.6em;
+    top: 6.5em;
     right: 2.5em;
     color: #ff7a7a;
 }
 .page_section .container-fluid main form label:nth-of-type(2){
     position: absolute;
-    top: 17.5em;
+    top: 13.3em;
     right: 2.5em;
     color: #ff7a7a;
 }
 .page_section .container-fluid main form label:nth-of-type(3){
     position: absolute;
-    top: 26.5em;
+    top: 20em;
     right: 2.5em;
     color: #ff7a7a;
 }
 .page_section .container-fluid main form label:nth-of-type(4){
     position: absolute;
-    top: 36em;
+    top: 27em;
     right: 2.5em;
     color: #ff7a7a;
 }
@@ -154,7 +159,7 @@ input,input:focus {
     align-items: center;
     
     position: relative;
-}
+}Ñ
 .error {
     display: none;
     justify-self: end;
@@ -170,9 +175,12 @@ input,input:focus {
 }
 }
 
-/* @media(max-width:31.5em) {
-    body.className{
-        background-image: url(/Workshop1/media/bg-intro-mobile.png);
-        background-size: cover;
+@media screen and (max-widh:500px){
+    body,html{
+        padding-left: 3vh;
     }
-} */
+    input{
+        width: 100%;
+    }
+
+}
