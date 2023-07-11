@@ -13,8 +13,8 @@ body.className{
     font-size: 1em;
 }
 
-
 body,html{
+        padding-left: 5vh;
         min-height: 100vh;
         min-height: 100vh;
         width: 100vw;
@@ -167,7 +167,15 @@ input,input:focus {
 @media screen and (max-width: 375px) {
     body.className {
         background-image: url(/media/bg-intro-mobile.png);
+    }
 }
+@media screen and (max-width:500px) {
+    body,html{
+        padding-left: 3vh;
+    }
+    input {
+        width: 100%;
+    }
 }
 
 /* @media(max-width:31.5em) {
