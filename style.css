@@ -41,9 +41,9 @@ input,input:focus {
 
 .page_section .container-fluid{
     display: flex;
-    align-items: center !important;
+    align-items: center ;
     flex-direction: column;
-    place-items: center !important;
+    place-items: center;
     gap: 1em;
 }
 
@@ -159,7 +159,7 @@ input,input:focus {
     align-items: center;
     
     position: relative;
-}Ñ
+}
 .error {
     display: none;
     justify-self: end;
