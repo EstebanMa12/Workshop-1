@@ -21,9 +21,6 @@ Form.onsubmit = e => {
     ? register() : fixInput()
 
     function register() {
-        // Play music
-        document.querySelector('#yay').play()
-
         const keys = ['name', 'last', 'mail', 'pass']  
         const values = Inputs.map(input => input.value)
 
@@ -43,7 +40,8 @@ Form.onsubmit = e => {
                 user.last, ']', 
                 'already exists'
             )    
-        }
+        };         // Play music
+        document.querySelector('#yay').play()
         
         // save user 
         Users.push(user)
