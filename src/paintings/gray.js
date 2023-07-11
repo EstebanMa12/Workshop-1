@@ -15,4 +15,7 @@ export function paintItGray(input, label) {
     invalid.innerHTML.includes(input.id) 
     ? invalid?.innerHTML?.replaceAll(red(input), black(input))
     : invalid?.innerHTML
+    
+    // error icon
+    input.nextElementSibling.style.display = 'none'
 }

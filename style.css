@@ -148,18 +148,21 @@ input,input:focus {
 .inputsPlaceholderRed {
     color: rgb(255, 122, 122);
 }
+/* ERROR ICON */
 .inputContainer {
     display: grid;
-    grid-template-columns: 1fr auto;
     align-items: center;
+    
     position: relative;
 }
-.inputContainer input {
-    grid-column: 1;
-}
 .error {
+    display: none;
+    justify-self: end;
+
+    margin-right: 3vh;
     position: absolute;
 }
+
 /* RESPONSIVE DESING WITH MEDIA QUERIES */
 @media screen and (max-width: 375px) {
     body.className {

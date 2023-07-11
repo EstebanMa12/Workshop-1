@@ -22,4 +22,7 @@ export function paintItBlue(input, label) {
     styleEl.innerHTML.includes(input.id)
     ? styleEl.innerHTML.replaceAll(black(input), blue(input))
     : styleEl.innerHTML += blue(input)
+
+    // error icon
+    input.nextElementSibling.style.display = 'none'
 }
