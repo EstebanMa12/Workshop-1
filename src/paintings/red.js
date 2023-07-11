@@ -27,4 +27,6 @@ export function paintItRed(input, label, def) {
         : styleEl.innerHTML.replaceAll(blue(input), red(input))
     : styleEl.innerHTML += red(input)
 
+    // error icon
+    input.nextElementSibling.style.display = 'grid'
 }
