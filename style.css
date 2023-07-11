@@ -203,12 +203,7 @@ input,input:focus {
 /* RESPONSIVE DESING WITH MEDIA QUERIES */
 @media screen and (max-width: 375px) {
     body.className {
-<<<<<<< HEAD
         background-image: url(./media/bg-intro-mobile.png);
-=======
-        background-image: url(/media/bg-intro-mobile.png);
-    }
->>>>>>> main
 }
 @media screen and (max-width:500px) {
     body,html{
@@ -232,5 +227,4 @@ input,input:focus {
     input{
         width: 100%;
     }
-
 }
