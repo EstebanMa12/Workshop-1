@@ -204,6 +204,7 @@ input,input:focus {
 @media screen and (max-width: 375px) {
     body.className {
         background-image: url(./media/bg-intro-mobile.png);
+    }
 }
 @media screen and (max-width:500px) {
     body,html{
