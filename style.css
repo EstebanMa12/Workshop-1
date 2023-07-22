@@ -219,6 +219,9 @@ input,input:focus {
         width: 69%;
         height: 80%;
     }
+    input{
+        width: 100%;
+    }
 }
 
 @media screen and (max-widh:500px){
