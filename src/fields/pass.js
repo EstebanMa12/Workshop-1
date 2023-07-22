@@ -4,10 +4,6 @@ import { paintItGray, paintItRed } from "../paintings.js"
 const passInput = passField.input
 const label = passField.label
 
-// EVENTS ORDER
-// keydown > keyup > input
-
-// if prevent default on keydown, key will be blocked.
 passInput.onkeydown = function(e) {
     if (e.key == ' ') e.preventDefault()
 }

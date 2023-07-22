@@ -35,10 +35,8 @@ emailInput.onkeyup = function(e) {
 
     const lettersAfterAt = this.value.includes('@') 
     ? this.value.slice(this.value.indexOf('@')).includes('.')
-        ? regEx_letters.test(this.value.slice(this.value.indexOf('@'), this.value.lastIndexOf('.')))
-        : regEx_letters.test(this.value.slice(this.value.indexOf('@'))) 
-    : false
-    console.log(this.value.slice(this.value.indexOf('@')));
+    ? regEx_letters.test(this.value.slice(this.value.indexOf('@'), this.value.indexOf('.')))
+    : regEx_letters.test(this.value.slice(this.value.indexOf('@'))) : false
     
     const includesPoint = lettersAfterAt 
     ? this.value.includes('.') : false
